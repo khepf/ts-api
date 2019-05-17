@@ -1,17 +1,9 @@
-import * as express from "express";
+import express from "express";
+import { routerV1 } from "./api/v1/v1";
 const app = express();
 
+app.disable("x-powered-by");
 
-app.get("/", (req, res, next) => {
-    res.send("TourBooking API");
-});
-
-app.get("/tours", (req, res, next) => {
-    res.send("Get a list of tours");
-});
-
-app.post("/tours", (req, res, next) => {
-    res.send("Post a new tour");
-});
+app.use("/v1", routerV1);
 
 app.listen(process.env.PORT || 8091, () => console.log("Server Started..."));
