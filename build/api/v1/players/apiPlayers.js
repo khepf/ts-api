@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const bodyParser_1 = require("../general/bodyParser");
+const apiCheckPlayerFilters_1 = require("./apiCheckPlayerFilters");
+const apiGetPlayers_1 = require("./apiGetPlayers");
+const apiCreatePlayer_1 = require("./apiCreatePlayer");
+const apiDeletePlayer_1 = require("./apiDeletePlayer");
+const apiUpdatePlayer_1 = require("./apiUpdatePlayer");
+exports.playersRouter = express_1.Router();
+exports.playersRouter.get('/', apiCheckPlayerFilters_1.apiCheckPlayerFilters, apiGetPlayers_1.apiGetPlayers);
+exports.playersRouter.post('/', bodyParser_1.jsonParser, apiCreatePlayer_1.apiCreatePlayer);
+exports.playersRouter.delete('/:id', apiDeletePlayer_1.apiDeletePlayer);
+exports.playersRouter.patch('/:id', bodyParser_1.jsonParser, apiUpdatePlayer_1.apiUpdatePlayer);
